@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loginform</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+</head>
+<body>
+
+         <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            {% block content %}
+            <form class="form-signin" method="post" action=".">
+                <span id="reauth-email" class="reauth-email"></span>
+                {{ form.as_p }}
+                {% csrf_token %}
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+             {% endblock %}
+            <a href="../resetmypassword" class="forgot-password">
+                Forgot the password?
+            </a>
+            <a href="../register" class="forgot-password">
+                register
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
+</html>
